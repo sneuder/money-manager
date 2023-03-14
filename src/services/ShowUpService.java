@@ -1,5 +1,10 @@
 package services;
 
+import java.util.List;
+
+import app.App;
+import models.accounts.GroupAccount;
+
 public class ShowUpService {
   public static void showMenu() {
     System.out.println("====================");
@@ -9,7 +14,13 @@ public class ShowUpService {
     System.out.println("4. More options");
   }
 
-  public static void showTransactions(){
+  public static void showTransactions() {
 
+  }
+
+  public static void showGroupAccounts() {
+    for (GroupAccount groupAccount : App.database.groupAccounts) {
+      System.out.println(groupAccount.name);
+    }
   }
 }

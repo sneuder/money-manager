@@ -1,4 +1,4 @@
-package models.categories.incomes;
+package app.models.categories.incomes;
 
 public class IncomeSubcategory {
   String id;

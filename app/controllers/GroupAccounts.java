@@ -1,4 +1,4 @@
-package controllers;
+package app.controllers;
 
 import com.google.gson.Gson;
 

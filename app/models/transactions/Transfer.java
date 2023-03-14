@@ -1,4 +1,4 @@
-package models.transactions;
+package app.models.transactions;
 
 import models.accounts.Account;
 

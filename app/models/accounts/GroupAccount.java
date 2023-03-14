@@ -1,4 +1,4 @@
-package models.accounts;
+package app.models.accounts;
 
 import java.util.ArrayList;
 

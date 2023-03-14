@@ -1,4 +1,4 @@
-package routes;
+package app.routes;
 
 import server.Server;
 

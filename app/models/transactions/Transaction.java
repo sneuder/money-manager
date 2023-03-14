@@ -1,4 +1,4 @@
-package models.transactions;
+package app.models.transactions;
 
 public class Transaction {
   String id;

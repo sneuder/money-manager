@@ -1,4 +1,4 @@
-package models.transactions;
+wpackage app.models.transactions;
 
 import models.accounts.Account;
 import models.categories.incomes.IncomeCategory;

@@ -1,26 +1,21 @@
 package server;
 
-import com.sun.net.httpserver.HttpServer;
-import com.sun.net.httpserver.HttpExchange;
+import controllers.GroupAccounts;
+
 import java.io.IOException;
-import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import com.sun.net.httpserver.HttpServer;
 
 public class Server {
+  public static HttpServer server;
+
   static public void start() {
-    HttpServer server;
     try {
+      GroupAccounts.ShowGroupAccounts controller = new GroupAccounts.ShowGroupAccounts();
       server = HttpServer.create(new InetSocketAddress(8000), 0);
-      server.createContext("/", (HttpExchange exchange) -> {
-        String response = "Hola desde Java!";
-        exchange.sendResponseHeaders(200, response.length());
-        OutputStream os = exchange.getResponseBody();
-        os.write(response.getBytes());
-        os.close();
-      });
+      server.createContext("/", controller);
       server.start();
     } catch (IOException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
   }

@@ -1,9 +1,7 @@
 package app.services;
 
-import java.util.List;
-
 import app.App;
-import models.accounts.GroupAccount;
+import app.models.accounts.GroupAccount;
 
 public class ShowUpService {
   public static void showMenu() {

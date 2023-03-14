@@ -1,9 +1,10 @@
 package app.routes;
 
-import server.Server;
+import app.server.Server;
+import app.controllers.GroupAccounts.*;
 
 public class GroupAccounts {
   static public void route() {
-    Server.server.createContext("/groupaccounts", new controllers.GroupAccounts.ShowGroupAccounts());
+    Server.server.createContext("/groupaccounts", new ShowGroupAccounts());
   }
 }

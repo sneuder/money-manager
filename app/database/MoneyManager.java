@@ -2,10 +2,10 @@ package app.database;
 
 import java.util.ArrayList;
 
-import models.accounts.GroupAccount;
-import models.categories.expenses.ExpenseCategory;
-import models.categories.incomes.IncomeCategory;
-import models.transactions.Transaction;
+import app.models.accounts.GroupAccount;
+import app.models.categories.expenses.ExpenseCategory;
+import app.models.categories.incomes.IncomeCategory;
+import app.models.transactions.Transaction;
 
 public class MoneyManager {
   String id;

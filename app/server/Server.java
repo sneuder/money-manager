@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import com.sun.net.httpserver.HttpServer;
 
+import app.routes.GroupAccounts;
+
 public class Server {
   public static HttpServer server;
 
@@ -11,7 +13,7 @@ public class Server {
     try {
       server = HttpServer.create(new InetSocketAddress(8000), 0);
       // establish routes
-      routes.GroupAccounts.route();
+      GroupAccounts.route();
       
       server.start();
     } catch (IOException e) {

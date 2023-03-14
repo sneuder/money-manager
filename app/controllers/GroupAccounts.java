@@ -10,8 +10,8 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 
 import app.App;
-import database.MoneyManager;
-import models.accounts.GroupAccount;
+import app.database.MoneyManager;
+import app.models.accounts.GroupAccount;
 
 public class GroupAccounts {
   static MoneyManager database = App.database;
@@ -22,10 +22,10 @@ public class GroupAccounts {
       ArrayList<GroupAccount> response = database.groupAccounts;
       // exchange.sendResponseHeaders(200, response.size());
       //
-      Gson gson = new Gson();
-      String json = gson.toJson(response);
+      // Gson gson = new Gson();
+      // String json = gson.toJson(response);
 
-      exchange.sendResponseHeaders(200, json.getBytes().length);
+      // exchange.sendResponseHeaders(200, json.getBytes().length);
 
       OutputStream os = exchange.getResponseBody();
       // os.write(response.getBytes());

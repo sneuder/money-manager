@@ -1,8 +1,8 @@
-wpackage app.models.transactions;
+package app.models.transactions;
 
-import models.accounts.Account;
-import models.categories.incomes.IncomeCategory;
-import models.categories.incomes.IncomeSubcategory;
+import app.models.accounts.Account;
+import app.models.categories.incomes.IncomeCategory;
+import app.models.categories.incomes.IncomeSubcategory;
 
 public class Income {
   String id;

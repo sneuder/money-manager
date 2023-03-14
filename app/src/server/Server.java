@@ -1,7 +1,5 @@
 package server;
 
-import controllers.GroupAccounts;
-
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import com.sun.net.httpserver.HttpServer;
@@ -11,9 +9,10 @@ public class Server {
 
   static public void start() {
     try {
-      GroupAccounts.ShowGroupAccounts controller = new GroupAccounts.ShowGroupAccounts();
       server = HttpServer.create(new InetSocketAddress(8000), 0);
-      server.createContext("/", controller);
+      // establish routes
+      routes.GroupAccounts.route();
+      
       server.start();
     } catch (IOException e) {
       e.printStackTrace();

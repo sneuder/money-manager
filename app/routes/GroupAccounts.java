@@ -5,8 +5,8 @@ import controllers.GroupAccounts.*;
 
 public class GroupAccounts {
   static public void route() {
-    Server.server.createContext("/groupaccounts", new GetGroupAccounts());
-    Server.server.createContext("/groupaccount", new PostGroupAccount());
-    Server.server.createContext("/groupaccount/{id}", new DeleteGroupAccount());
+    Server.server.createContext("/groupaccounts/get", new GetGroupAccounts());
+    Server.server.createContext("/groupaccount/post", new PostGroupAccount());
+    Server.server.createContext("/groupaccount/delete/{id}", new DeleteGroupAccount());
   }
 }

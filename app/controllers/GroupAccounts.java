@@ -9,6 +9,7 @@ import com.sun.net.httpserver.HttpHandler;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.UUID;
 
 import app.App;
 
@@ -24,9 +25,6 @@ public class GroupAccounts {
   static public class GetGroupAccounts implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-      if (!HTTPValidator.validateRoute(exchange, "GET", "/groupaccounts"))
-        return;
-
       ArrayList<GroupAccount> response = database.groupAccounts;
       String json = ToJSON.convert(response);
       HTTPResponse.send(exchange, json);
@@ -49,12 +47,8 @@ public class GroupAccounts {
   static public class DeleteGroupAccount implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-      String id = HTTPParams.getParam(exchange);
-      String path = String.format("/groupaccounts/%s", id);
-      System.out.println(path);
-      if (!HTTPValidator.validateRoute(exchange, "DELETE", path))
-        return;
-
+      // String id = HTTPParams.getParam(exchange);
+      // database.groupAccountRemove(id);
       String json = ToJSON.convert(new Message(true, "group account deleted"));
       HTTPResponse.send(exchange, json);
     }

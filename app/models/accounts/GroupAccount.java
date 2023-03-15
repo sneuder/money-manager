@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class GroupAccount {
-  UUID id;
+  public UUID id;
   public String name;
   String description;
   ArrayList<Account> accounts = new ArrayList<Account>();

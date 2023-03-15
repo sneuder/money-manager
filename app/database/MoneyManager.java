@@ -1,6 +1,8 @@
 package database;
 
 import java.util.ArrayList;
+import java.util.UUID;
+import java.util.stream.*;
 
 import models.accounts.GroupAccount;
 import models.categories.expenses.ExpenseCategory;
@@ -32,8 +34,11 @@ public class MoneyManager {
     this.groupAccounts.add(newGroupAccount);
   }
 
-  public void groupAccountRemove() {
-
+  public void groupAccountRemove(String id) {
+    UUID idGA = UUID.fromString(id);
+    this.groupAccounts = groupAccounts.stream()
+      .filter((groupAccount) -> !groupAccount.id.equals(idGA))
+      .collect(Collectors.toCollection(ArrayList::new));
   }
 
   public void incomeCategoryAdd(IncomeCategory newIncomeCategory) {

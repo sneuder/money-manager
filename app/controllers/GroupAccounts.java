@@ -47,8 +47,8 @@ public class GroupAccounts {
   static public class DeleteGroupAccount implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-      // String id = HTTPParams.getParam(exchange);
-      // database.groupAccountRemove(id);
+      String id = HTTPParams.getParam(exchange);
+      database.groupAccountRemove(id);
       String json = ToJSON.convert(new Message(true, "group account deleted"));
       HTTPResponse.send(exchange, json);
     }

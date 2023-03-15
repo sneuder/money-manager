@@ -1,11 +1,13 @@
 package models.transactions;
 
+import java.util.UUID;
+
 import models.accounts.Account;
 import models.categories.incomes.IncomeCategory;
 import models.categories.incomes.IncomeSubcategory;
 
 public class Income {
-  String id;
+  UUID id;
   Account account;
   IncomeCategory incomeCategory;
   IncomeSubcategory incomeSubcategory;
@@ -19,6 +21,7 @@ public class Income {
     float amount,
     String description
   ) {
+    this.id = UUID.randomUUID();
     this.account = account;
     this.incomeCategory = incomeCategory;
     this.incomeSubcategory = incomeSubcategory;

@@ -1,14 +1,16 @@
 package models.accounts;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class GroupAccount {
-  String id;
+  UUID id;
   public String name;
   String description;
   ArrayList<Account> accounts = new ArrayList<Account>();
 
   public GroupAccount(String name, String description) {
+    this.id = UUID.randomUUID();
     this.name = name;
     this.description = description;
   }

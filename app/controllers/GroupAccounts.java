@@ -14,7 +14,7 @@ import app.App;
 
 import database.MoneyManager;
 import models.accounts.GroupAccount;
-import utils.HTTPResponse;
+import services.HTTPResponse;
 
 public class GroupAccounts {
   static MoneyManager database = App.database;

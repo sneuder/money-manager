@@ -1,4 +1,4 @@
-package app.models.categories.incomes;
+package models.categories.incomes;
 
 import java.util.ArrayList;
 

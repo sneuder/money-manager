@@ -1,6 +1,6 @@
-package app.models.transactions;
+package models.transactions;
 
-import app.models.accounts.Account;
+import models.accounts.Account;
 
 public class Transfer {
   String id;

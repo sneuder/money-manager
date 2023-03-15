@@ -22,7 +22,7 @@
     </dependency>
   </dependencies>
   <build>
-    <sourceDirectory>app</sourceDirectory>
+    <sourceDirectory>app/app</sourceDirectory>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

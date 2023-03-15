@@ -1,4 +1,4 @@
-package app.models.accounts;
+package models.accounts;
 
 public class Account {
   String id;

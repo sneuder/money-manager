@@ -1,15 +1,15 @@
-package app.services;
+package services;
 
-import app.database.MoneyManager;
+import database.MoneyManager;
 
-import app.models.accounts.Account;
-import app.models.accounts.GroupAccount;
+import models.accounts.Account;
+import models.accounts.GroupAccount;
 
-import app.models.categories.expenses.ExpenseCategory;
-import app.models.categories.expenses.ExpenseSubcategory;
+import models.categories.expenses.ExpenseCategory;
+import models.categories.expenses.ExpenseSubcategory;
 
-import app.models.categories.incomes.IncomeCategory;
-import app.models.categories.incomes.IncomeSubcategory;
+import models.categories.incomes.IncomeCategory;
+import models.categories.incomes.IncomeSubcategory;
 
 public class SetUp {
   static GroupAccount defaultGroup = new GroupAccount("my accounts", null);

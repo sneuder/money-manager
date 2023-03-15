@@ -1,7 +1,7 @@
-package app.services;
+package services;
 
 import app.App;
-import app.models.accounts.GroupAccount;
+import models.accounts.GroupAccount;
 
 public class ShowUpService {
   public static void showMenu() {

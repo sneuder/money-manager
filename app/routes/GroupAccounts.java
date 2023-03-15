@@ -1,7 +1,7 @@
-package app.routes;
+package routes;
 
-import app.server.Server;
-import app.controllers.GroupAccounts.*;
+import server.Server;
+import controllers.GroupAccounts.*;
 
 public class GroupAccounts {
   static public void route() {

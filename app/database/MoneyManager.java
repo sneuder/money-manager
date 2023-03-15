@@ -1,11 +1,11 @@
-package app.database;
+package database;
 
 import java.util.ArrayList;
 
-import app.models.accounts.GroupAccount;
-import app.models.categories.expenses.ExpenseCategory;
-import app.models.categories.incomes.IncomeCategory;
-import app.models.transactions.Transaction;
+import models.accounts.GroupAccount;
+import models.categories.expenses.ExpenseCategory;
+import models.categories.incomes.IncomeCategory;
+import models.transactions.Transaction;
 
 public class MoneyManager {
   String id;

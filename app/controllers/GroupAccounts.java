@@ -1,4 +1,4 @@
-package app.controllers;
+package controllers;
 
 import com.google.gson.Gson;
 
@@ -10,8 +10,9 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 
 import app.App;
-import app.database.MoneyManager;
-import app.models.accounts.GroupAccount;
+
+import database.MoneyManager;
+import models.accounts.GroupAccount;
 
 public class GroupAccounts {
   static MoneyManager database = App.database;

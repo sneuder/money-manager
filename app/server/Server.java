@@ -1,10 +1,10 @@
-package app.server;
+package server;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import com.sun.net.httpserver.HttpServer;
 
-import app.routes.GroupAccounts;
+import routes.GroupAccounts;
 
 public class Server {
   public static HttpServer server;

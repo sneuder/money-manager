@@ -1,4 +1,4 @@
-package app.models.categories.expenses;
+package models.categories.expenses;
 
 import java.util.ArrayList;
 

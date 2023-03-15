@@ -1,4 +1,4 @@
-package app.controllers;
+package controllers;
 
 public class Incomes {
   

@@ -1,8 +1,8 @@
-package app.models.transactions;
+package models.transactions;
 
-import app.models.accounts.Account;
-import app.models.categories.expenses.ExpenseCategory;
-import app.models.categories.expenses.ExpenseSubcategory;
+import models.accounts.Account;
+import models.categories.expenses.ExpenseCategory;
+import models.categories.expenses.ExpenseSubcategory;
 
 public class Expense {
   String id;

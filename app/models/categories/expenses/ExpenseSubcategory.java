@@ -1,4 +1,4 @@
-package app.models.categories.expenses;
+package models.categories.expenses;
 
 public class ExpenseSubcategory {
   String id;

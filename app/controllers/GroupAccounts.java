@@ -1,34 +1,44 @@
 package controllers;
 
-import com.google.gson.Gson;
+import constants.ToJSON;
+import constants.Message;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
 import java.io.IOException;
-import java.io.OutputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import app.App;
 
 import database.MoneyManager;
 import models.accounts.GroupAccount;
+import utils.HTTPResponse;
 
 public class GroupAccounts {
   static MoneyManager database = App.database;
-  static Gson gson = new Gson();
 
-  static public class ShowGroupAccounts implements HttpHandler {
+  static public class GetGroupAccounts implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
       ArrayList<GroupAccount> response = database.groupAccounts;
-      String json = gson.toJson(response);
+      String json = ToJSON.convert(response);
+      HTTPResponse.send(exchange, json);
+    }
+  }
 
-      exchange.sendResponseHeaders(200, json.getBytes().length);
+  static public class PostGroupAccount implements HttpHandler {
 
-      OutputStream os = exchange.getResponseBody();
-      os.write(json.getBytes());
-      os.close();
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+      InputStream requestBody = exchange.getRequestBody();
+
+      Object newGroupAccount = ToJSON.bodyJson(requestBody, GroupAccount.class);
+      database.groupAccountAdd((GroupAccount) newGroupAccount);
+
+      String json = ToJSON.convert(new Message(true, "account group created"));
+      HTTPResponse.send(exchange, json);
     }
   }
 }

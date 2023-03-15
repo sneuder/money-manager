@@ -5,6 +5,7 @@ import controllers.GroupAccounts.*;
 
 public class GroupAccounts {
   static public void route() {
-    Server.server.createContext("/groupaccounts", new ShowGroupAccounts());
+    Server.server.createContext("/groupaccounts", new GetGroupAccounts());
+    Server.server.createContext("/groupaccount", new PostGroupAccount());
   }
 }

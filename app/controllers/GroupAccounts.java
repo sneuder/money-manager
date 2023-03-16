@@ -9,7 +9,6 @@ import com.sun.net.httpserver.HttpHandler;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.UUID;
 
 import app.App;
 
@@ -17,7 +16,6 @@ import database.MoneyManager;
 import models.accounts.GroupAccount;
 import services.HTTPParams;
 import services.HTTPResponse;
-import services.HTTPValidator;
 
 public class GroupAccounts {
   static MoneyManager database = App.database;

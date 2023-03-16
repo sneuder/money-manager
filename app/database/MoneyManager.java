@@ -41,6 +41,16 @@ public class MoneyManager {
       .collect(Collectors.toCollection(ArrayList::new));
   }
 
+  public GroupAccount groupAccountFindOne(String id) {
+    UUID idGA = UUID.fromString(id);
+    GroupAccount foundGroupAccount = groupAccounts.stream()
+      .filter((groupAccount) -> groupAccount.id.equals(idGA))
+      .findFirst()
+      .orElse(null);
+
+    return foundGroupAccount;
+  }
+
   public void incomeCategoryAdd(IncomeCategory newIncomeCategory) {
     this.incomeCategories.add(newIncomeCategory);
   }

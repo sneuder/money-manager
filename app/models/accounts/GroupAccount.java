@@ -2,6 +2,7 @@ package models.accounts;
 
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.stream.*;
 
 public class GroupAccount {
   public UUID id;
@@ -16,10 +17,23 @@ public class GroupAccount {
   }
 
   public void addAccount(Account newAccount) {
-    this.accounts.add(newAccount);;
+    this.accounts.add(newAccount);
   }
 
-  public void removeAccount(String idAccount) {
+  public void removeAccount(String id) {
+    UUID idAccount = UUID.fromString(id);
+    this.accounts = this.accounts.stream()
+      .filter((account) -> !account.id.equals(idAccount))
+      .collect(Collectors.toCollection(ArrayList::new));
+  }
 
+  public Account findAccountById(String id) {
+    UUID idAccount = UUID.fromString(id);
+    Account foundAccount = this.accounts.stream()
+      .filter((account) -> account.id.equals(idAccount))
+      .findFirst()
+      .orElse(null);
+
+    return foundAccount;
   }
 }

@@ -56,7 +56,7 @@ public class GroupAccounts {
         e.printStackTrace();
       }
 
-      String json = ToJSON.convert(new Message(true, "group account deleted"));
+      String json = ToJSON.convert(new Message(true, "group account updated"));
       HTTPResponse.send(exchange, json);
     }
   }

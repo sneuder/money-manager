@@ -3,6 +3,7 @@ package models.accounts;
 import java.util.ArrayList;
 import java.util.UUID;
 import java.util.stream.*;
+import java.lang.reflect.Field;
 
 public class GroupAccount {
   public UUID id;
@@ -14,6 +15,16 @@ public class GroupAccount {
     this.id = UUID.randomUUID();
     this.name = name;
     this.description = description;
+  }
+
+  public void updateGroupAccount(GroupAccount newValues) throws IllegalAccessException {
+    Field[] fields = this.getClass().getDeclaredFields();
+
+    for (Field field : fields) {
+      field.setAccessible(true);
+      Object newValue = field.get(newValues);
+      if (newValue != null) field.set(this, newValue);
+    }
   }
 
   public void addAccount(Account newAccount) {

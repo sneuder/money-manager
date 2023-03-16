@@ -42,6 +42,25 @@ public class GroupAccounts {
     }
   }
 
+  static public class UpdateGroupAccount implements HttpHandler {
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+      String id = HTTPParams.getParam(exchange);
+      InputStream requestBody = exchange.getRequestBody();
+      Object valuesToUpdate = ToJSON.bodyJson(requestBody, GroupAccount.class);
+
+      GroupAccount groupAccountToUpdate = database.groupAccountFindOne(id);
+      try {
+        groupAccountToUpdate.updateGroupAccount((GroupAccount) valuesToUpdate);
+      } catch (IllegalAccessException e) {
+        e.printStackTrace();
+      }
+
+      String json = ToJSON.convert(new Message(true, "group account deleted"));
+      HTTPResponse.send(exchange, json);
+    }
+  }
+
   static public class DeleteGroupAccount implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {

@@ -29,12 +29,23 @@ public class GroupAccounts {
     }
   }
 
+  static public class GetGroupAccount implements HttpHandler {
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+      String id = HTTPParams.getParam(exchange);
+      GroupAccount foundGroupAccount = database.groupAccountFindOne(id);
+      String json = ToJSON.convert(foundGroupAccount);
+      HTTPResponse.send(exchange, json);
+    }
+  }
+
   static public class PostGroupAccount implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
       InputStream requestBody = exchange.getRequestBody();
 
-      Object newGroupAccount = ToJSON.bodyJson(requestBody, GroupAccount.class);
+      GroupAccount draftGroupAccount = (GroupAccount) ToJSON.bodyJson(requestBody, GroupAccount.class);
+      GroupAccount newGroupAccount = new GroupAccount(draftGroupAccount.name, draftGroupAccount.description);
       database.groupAccountAdd((GroupAccount) newGroupAccount);
 
       String json = ToJSON.convert(new Message(true, "group account created"));

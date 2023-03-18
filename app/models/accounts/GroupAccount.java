@@ -8,7 +8,7 @@ import java.lang.reflect.Field;
 public class GroupAccount {
   public UUID id;
   public String name;
-  String description;
+  public String description;
   ArrayList<Account> accounts = new ArrayList<Account>();
 
   public GroupAccount(String name, String description) {

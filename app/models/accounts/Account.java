@@ -3,10 +3,10 @@ package models.accounts;
 import java.util.UUID;
 
 public class Account {
-  UUID id;
-  String name;
+  public UUID id;
+  public String name;
   float amount;
-  String description;
+  public String description;
   String groupAccount;
 
   public Account(String name, float amount, String description, String groupAccount) {

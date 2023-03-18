@@ -8,12 +8,12 @@ import com.sun.net.httpserver.HttpHandler;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 
 import app.App;
 
 import database.MoneyManager;
 import models.accounts.GroupAccount;
+import models.accounts.Account;
 import services.HTTPParams;
 import services.HTTPResponse;
 
@@ -23,8 +23,9 @@ public class Accounts {
   static public class GetAccounts implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-      ArrayList<GroupAccount> response = database.groupAccounts;
-      String json = ToJSON.convert(response);
+      String id = HTTPParams.getParam(exchange);
+      GroupAccount foundGroupAccount = database.groupAccountFindOne(id);
+      String json = ToJSON.convert(foundGroupAccount.accounts);
       HTTPResponse.send(exchange, json);
     }
   }
@@ -33,8 +34,11 @@ public class Accounts {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
       String id = HTTPParams.getParam(exchange);
+      
       GroupAccount foundGroupAccount = database.groupAccountFindOne(id);
-      String json = ToJSON.convert(foundGroupAccount);
+      Account foundAccount = foundGroupAccount.findAccountById(id);
+
+      String json = ToJSON.convert(foundAccount);
       HTTPResponse.send(exchange, json);
     }
   }
@@ -42,13 +46,16 @@ public class Accounts {
   static public class PostAccount implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
+      String id = HTTPParams.getParam(exchange);
       InputStream requestBody = exchange.getRequestBody();
 
-      GroupAccount draftGroupAccount = (GroupAccount) ToJSON.bodyJson(requestBody, GroupAccount.class);
-      GroupAccount newGroupAccount = new GroupAccount(draftGroupAccount.name, draftGroupAccount.description);
-      database.groupAccountAdd((GroupAccount) newGroupAccount);
+      GroupAccount foundGroupAccount = database.groupAccountFindOne(id);
+      Account draftAccount = (Account) ToJSON.bodyJson(requestBody, Account.class);
+      Account newAccount = new Account(draftAccount.name, 0, draftAccount.description, foundGroupAccount.description);
 
-      String json = ToJSON.convert(new Message(true, "group account created"));
+      foundGroupAccount.addAccount(newAccount);
+
+      String json = ToJSON.convert(new Message(true, "account created"));
       HTTPResponse.send(exchange, json);
     }
   }

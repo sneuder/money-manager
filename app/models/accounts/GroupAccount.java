@@ -9,7 +9,7 @@ public class GroupAccount {
   public UUID id;
   public String name;
   public String description;
-  ArrayList<Account> accounts = new ArrayList<Account>();
+  public ArrayList<Account> accounts = new ArrayList<Account>();
 
   public GroupAccount(String name, String description) {
     this.id = UUID.randomUUID();

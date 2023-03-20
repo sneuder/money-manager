@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 import java.util.stream.*;
 
-import models.accounts.GroupAccount;
+import models.accounts.GroupAccountModel;
 import models.categories.expenses.ExpenseCategory;
 import models.categories.incomes.IncomeCategory;
 import models.transactions.Transaction;
@@ -14,56 +14,11 @@ public class MoneyManager {
   String databaseName;
 
   public ArrayList<Transaction> transactions = new ArrayList<Transaction>();
-  public ArrayList<GroupAccount> groupAccounts = new ArrayList<GroupAccount>();
+  public ArrayList<GroupAccountModel> groupAccounts = new ArrayList<GroupAccountModel>();
   public ArrayList<IncomeCategory> incomeCategories = new ArrayList<IncomeCategory>();
   public ArrayList<ExpenseCategory> expenseCategories = new ArrayList<ExpenseCategory>();
 
   public MoneyManager(String databaseName) {
     this.databaseName = databaseName;
-  }
-
-  public void transactionAdd() {
-
-  }
-
-  public void transactionRemove(){
-
-  }
-
-  public void groupAccountAdd(GroupAccount newGroupAccount) {
-    this.groupAccounts.add(newGroupAccount);
-  }
-
-  public void groupAccountRemove(String id) {
-    UUID idGA = UUID.fromString(id);
-    this.groupAccounts = groupAccounts.stream()
-      .filter((groupAccount) -> !groupAccount.id.equals(idGA))
-      .collect(Collectors.toCollection(ArrayList::new));
-  }
-
-  public GroupAccount groupAccountFindOne(String id) {
-    UUID idGA = UUID.fromString(id);
-    GroupAccount foundGroupAccount = groupAccounts.stream()
-      .filter((groupAccount) -> groupAccount.id.equals(idGA))
-      .findFirst()
-      .orElse(null);
-
-    return foundGroupAccount;
-  }
-
-  public void incomeCategoryAdd(IncomeCategory newIncomeCategory) {
-    this.incomeCategories.add(newIncomeCategory);
-  }
-
-  public void incomeCategoryRemove() {
-
-  }
-
-  public void expenseCategoryAdd(ExpenseCategory newExpenseCategory) {
-    this.expenseCategories.add(newExpenseCategory);
-  }
-
-  public void expenseCategoryRemove() {
-    
   }
 }

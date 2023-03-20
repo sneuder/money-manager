@@ -8,7 +8,7 @@ import java.util.UUID;
 @Persistent
 public class GroupAccountModel {
   @Id
-  private UUID id;
+  public UUID id;
   public String name;
   public String description;
 

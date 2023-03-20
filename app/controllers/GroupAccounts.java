@@ -21,17 +21,14 @@ public class GroupAccounts {
     public void handle(HttpExchange exchange) throws IOException {
       InputStream requestBody = exchange.getRequestBody();
 
-      GroupAccountModel draftGroupAccount = (GroupAccountModel) ToJSON.bodyJson(
-        requestBody, 
-        GroupAccountModel.class
-      );
+      GroupAccountModel draftGroupAccount = (GroupAccountModel) ToJSON.bodyJson(requestBody, GroupAccountModel.class);
 
-      GroupAccountModel newGroupAccount = new GroupAccountModel(
-        draftGroupAccount.name,
-        draftGroupAccount.description
-      );
+      // GroupAccountModel newGroupAccount = new GroupAccountModel(
+      //   draftGroupAccount.name,
+      //   draftGroupAccount.description
+      // );
 
-      GroupAccountDB.addGroupAccount(newGroupAccount);
+      // GroupAccountDB.addGroupAccount(newGroupAccount);
 
       String json = ToJSON.convert(new Message(true, "group account created"));
       HTTPResponse.send(exchange, json);
